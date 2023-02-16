@@ -2,11 +2,11 @@ import axios from "axios";
 import { Workout,Exercise, Users } from "./api_types";
 
 class Api{
-    getAllUsers = async (): Promise<Users[]> =>(await (axios.get('https://localhost:7155/Users/get'))).data;
+    getAllUsers = async () =>(await (axios.get('https://localhost:7155/Users/get'))).data;
 
     searchByName = async (username: string) => await axios.get('https://localhost:7155/Users/searchbyusername?username='+ username);
 
-    createNewUser = async (username: string) => await axios.post('https://localhost:7155/Users/createNewUser');
+    createNewUser = async (username: string) => await axios.post('https://localhost:7155/Users/CreateNewUser?username='+ username);
 
     deleteUser = async (username: string) => await axios.delete('https://localhost:7155/Users/deleteUser');
 
