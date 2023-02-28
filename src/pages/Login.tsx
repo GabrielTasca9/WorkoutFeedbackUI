@@ -11,7 +11,6 @@ function Login() {
 
   const handleSignIn = async () => {
     const response = await api.searchByName(username);
-    console.log(response.data)
     const data = response.data
     navigate('/workout',{state:{data}})
   }
