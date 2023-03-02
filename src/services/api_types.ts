@@ -1,7 +1,8 @@
-export type Workout ={
+export type Workouts ={
     day: string;
     description: string;
     exercises: Exercise[];
+    editMode: boolean;
 }
 export type Exercise = {
     name: string;
@@ -12,5 +13,5 @@ export type Exercise = {
 export type Users ={
     id: string;
     username: string;
-    workouts: Workout[];
+    workouts: Workouts[];
 }

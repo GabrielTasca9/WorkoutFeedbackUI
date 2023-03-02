@@ -1,19 +1,32 @@
 import React from 'react'
-import Workout from './Workouts'
 import api from '../services/api'
-import { Users } from '../services/api_types'
+import { Exercise, Users, Workouts } from '../services/api_types'
 import { useNavigate } from 'react-router-dom';
+import { useWorkoutStore } from '../stores/workoutStore';
+import { useUserStore } from '../stores/userStore';
 
 function Login() {
   const [username, setUserName] = React.useState<string>("");
   const navigate = useNavigate();
-
+  const {workoutValue, setWorkout} = useWorkoutStore((state) => ({workoutValue: state.workoutValue, setWorkout:state.setWorkout}))
+  const {userValue, setUser} = useUserStore((state) => ({userValue: state.userValue, setUser:state.setUser}))
 
   const handleSignIn = async () => {
     const response = await api.searchByName(username);
-    const data = response.data
-    navigate('/workout',{state:{data}})
+    const user: Users = {id: response.data.id, username: response.data.username, workouts: response.data.workouts}
+    setUser(user)
+    const data = user.workouts.map((workout: { day: string; description: string; exercises: Exercise[];}) =>(
+      {
+        day: workout.day,
+        description: workout.description,
+        exercises: workout.exercises,
+        editMode:false,
+      }
+    ));
+    setWorkout(data)
+    navigate('/workout')
   }
+  
   const handleCreateAccount = async () => {
     navigate('/create')
   }
