@@ -15,6 +15,7 @@ type Exercise = {
     weight: string;
     reps: string;
     sets: string;
+    editMode: boolean;
 }
 
 export type Users ={

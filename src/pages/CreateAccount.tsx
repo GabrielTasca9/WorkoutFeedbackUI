@@ -1,5 +1,5 @@
 import React from 'react'
-import { Workout, Exercise, Users } from '../services/api_types'
+import { Workouts, Exercise, Users } from '../services/api_types'
 import {useLocation} from 'react-router-dom';
 import api from '../services/api';
 

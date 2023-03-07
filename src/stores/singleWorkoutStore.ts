@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
 type WorkouProps ={
-    workoutValue: Workout[],
-    setWorkout: (value: Workout[]) => void
+    singleWorkoutValue: Workout,
+    setSingleWorkout: (value: Workout) => void
 }
 type Workout ={
     day: string;
@@ -20,8 +20,8 @@ type Exercise = {
     editMode:boolean;
 }
 
-let w: Workout[]
-export const useWorkoutStore = create<WorkouProps>((set)=> ({
-    workoutValue: w,
-    setWorkout: (value: Workout[]) => set({workoutValue: value})
+let w: Workout
+export const useSingleWorkoutStore = create<WorkouProps>((set)=> ({
+    singleWorkoutValue: w,
+    setSingleWorkout: (value: Workout) => set({singleWorkoutValue: value})
 }))

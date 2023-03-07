@@ -21,6 +21,7 @@ function Login() {
         description: workout.description,
         exercises: workout.exercises,
         editMode:false,
+        openDropdown: false,
       }
     ));
     setWorkout(data)
