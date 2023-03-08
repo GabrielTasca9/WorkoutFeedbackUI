@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Workout,Exercise, Users } from "./api_types";
+import { Workouts,Exercise, Users } from "./api_types";
 
 class Api{
     getAllUsers = async () =>(await (axios.get('https://workoutfeedbackapi.azurewebsites.net/Users/get'))).data;
@@ -10,7 +10,7 @@ class Api{
 
     deleteUser = async (username: string) => await axios.delete('https://workoutfeedbackapi.azurewebsites.net/Users/deleteUser?username=' + username);
 
-    createWorkout = async (username: string, workout: Workout) => await axios.post('https://workoutfeedbackapi.azurewebsites.net/Users/createWorkout?username=' + username + '&day=' + workout.day + '&description=' + workout.description);
+    createWorkout = async (username: string, workout: Workouts) => await axios.post('https://workoutfeedbackapi.azurewebsites.net/Users/createWorkout?username=' + username + '&day=' + workout.day + '&description=' + workout.description);
     
     createExercise = async (username: string, workoutday: string, exercise: Exercise) => await axios.post('https://workoutfeedbackapi.azurewebsites.net/Users/createExercise?username=' + username + '&workoutDay=' + workoutday + '&Name=' + exercise.name + '&Weight=' + exercise.weight + '&Reps=' + exercise.reps + '&Sets=' + exercise.sets);
 
