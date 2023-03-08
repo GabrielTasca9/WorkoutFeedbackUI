@@ -10,8 +10,8 @@ function WorkoutPage() {
   return (
     <div className="bg-slate-900 w-full min-h-screen">
       <div className='flex flex-col w-full items-center justify-center p-5 lg:py-0'>
-        <div className='flex flex-col items-center justify-center w-full bg-white rounded-lg shadow dark:border md:mt-5 xl:p-0 dark:bg-gray-800 dark:border-gray-700 md:w-1/2'>
-          <h2 className='flex justify-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white p-6'>
+        <div className='flex flex-col items-center justify-center w-full rounded-lg shadow border md:mt-5 xl:p-0 bg-gray-800 border-gray-700 md:w-1/2'>
+          <h2 className='flex justify-center text-xl font-bold leading-tight tracking-tight md:text-2xl text-white p-6'>
             {userValue.username}
           </h2>
           <Workout/>
