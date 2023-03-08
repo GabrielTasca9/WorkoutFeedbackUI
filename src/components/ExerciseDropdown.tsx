@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useWorkoutStore } from "../stores/workoutStore"
-import {FaEdit} from "react-icons/fa"
+import {FaEdit, FaTrash} from "react-icons/fa"
 import {MdOutlineArrowDropDown} from "react-icons/md"
 import { Exercise, Workouts } from "../services/api_types"
 import { useExerciseStore } from "../stores/exerciseStore"
@@ -21,11 +21,11 @@ export const ExerciseDropdown = () => {
         <div className='flex flex-col items-center w-full justify-center p-6 md:h-100'>
             <h3 className="flex justify-center w-full text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2x2 dark:text-white p-1">{singleWorkoutValue.description}</h3>
             <div className="flex flex-row w-full">
-                <span className="flex justify-center w-1/2 p-2">Nome</span>
-                <span className="flex justify-center w-1/6 p-2">Peso</span>
-                <span className="flex justify-center w-1/6 p-2">Sets</span>
-                <span className="flex justify-center w-1/6 p-2">Reps</span>
-                <a className="flex justify-start w-1/6"></a>
+                <span className="flex dark:text-white justify-center w-1/2 p-2">Nome</span>
+                <span className="flex dark:text-white justify-center w-1/6 p-2">Peso</span>
+                <span className="flex dark:text-white justify-center w-1/6 p-2">Sets</span>
+                <span className="flex dark:text-white justify-center w-1/6 p-2">Reps</span>
+                <a className="flex justify-start w-1/4"></a>
             </div>
             <div className='flex flex-col items-center justify-center: initial sm:justify-center w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-600 dark:border-gray-700'>
                 {exercisesValue.map((item,index) => (
@@ -41,7 +41,7 @@ export const ExerciseDropdown = () => {
                             </>
                             : 
                             <>
-                                <h4 className="flex justify-start text-xl w-1/2 leading-tight tracking-tight text-gray-900 md:text-2x2 dark:text-white p-2">{item.name}</h4>
+                                <h4 className="flex justify-start truncate hover:text-clip text-xl w-1/2 leading-tight tracking-tight text-gray-900 md:text-2x2 dark:text-white p-2">{item.name}</h4>
                                 <h4 className="flex justify-start text-xl w-1/6 leading-tight tracking-tight text-gray-900 md:text-2x2 dark:text-white p-2">{item.weight}</h4>
                                 <h4 className="flex justify-start text-xl w-1/6 leading-tight tracking-tight text-gray-900 md:text-2x2 dark:text-white p-2">{item.sets}</h4>
                                 <h4 className="flex justify-start text-xl w-1/6 leading-tight tracking-tight text-gray-900 md:text-2x2 dark:text-white p-2">{item.reps}</h4>
@@ -49,6 +49,9 @@ export const ExerciseDropdown = () => {
                             }
                             <div className="flex items-center p-1/2" onClick={e => handleEdit(item,index)}>
                                 <FaEdit size={28} color="white"/>
+                            </div>
+                            <div className="flex items-center p-1" onClick={e => handleEdit(item,index)}>
+                                <FaTrash size={28} color="white"/>
                             </div>
                         </div>
                     </div>

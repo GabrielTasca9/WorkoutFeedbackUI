@@ -27,10 +27,14 @@ export const Workout = () => {
             count++
         }
         setWorkout(w)
-        workoutValue.forEach(i => i.day == workout.day ? setSingleWorkout(i) : "")
-        setExercises(singleWorkoutValue.exercises)
+        workoutValue.forEach(i => i.day == workout.day ? setExercises(i.exercises) : "")
+        changeSingleWorkout(workout.day)
     }
 
+    const changeSingleWorkout = (day: string) => {
+        workoutValue.forEach(i => i.day == day ? setSingleWorkout(i) : "")
+    }
+    
     const handleEdit = (workout: Workouts, index: number) => {
         workout.editMode = !(workout.editMode)
         let w = workoutValue
