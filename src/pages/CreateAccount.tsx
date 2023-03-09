@@ -1,10 +1,11 @@
 import React from 'react'
 import { Workouts, Exercise, Users } from '../services/api_types'
-import {useLocation} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import api from '../services/api';
 
 function CreateAccount() {
     const [canCreate, setCanCreate] = React.useState<boolean>(true);
+    const navigate = useNavigate();
     const[username,setUserName] = React.useState<string>("");
 
     const handleCreateAccount = async () => {
@@ -14,13 +15,11 @@ function CreateAccount() {
             if(i.username == username){
                 setCanCreate(false)
             }
-            else{
-                console.log(i.username)
-            }
     })
         if(canCreate){
             createAccountCall();
         }
+        navigate('/')
     }
 
     const createAccountCall = async () => {

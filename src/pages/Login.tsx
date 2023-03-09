@@ -25,6 +25,7 @@ function Login() {
       }
     ));
     setWorkout(data)
+    console.log(workoutValue)
     navigate('/workout')
   }
   

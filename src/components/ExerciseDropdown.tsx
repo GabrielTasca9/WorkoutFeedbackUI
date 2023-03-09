@@ -5,16 +5,22 @@ import {MdOutlineArrowDropDown} from "react-icons/md"
 import { Exercise, Workouts } from "../services/api_types"
 import { useExerciseStore } from "../stores/exerciseStore"
 import { useSingleWorkoutStore } from "../stores/singleWorkoutStore"
+import { useUserStore } from "../stores/userStore"
 
 export const ExerciseDropdown = () => {
     const {exercisesValue, setExercises} = useExerciseStore((state) => ({exercisesValue: state.exercisesValue, setExercises: state.setExercises}))
     const singleWorkoutValue = useSingleWorkoutStore((state) => state.singleWorkoutValue)
-
-    const handleEdit = (exercise: Exercise, index: number) => {
+    const userValue = useUserStore((state) => state.userValue)
+    
+    const handleEditExercise = async(exercise: Exercise, index: number) => {
         exercise.editMode = !(exercise.editMode)
         let w = exercisesValue
         w[index] = exercise
         setExercises(w)
+    }
+    
+    const handleDeleteExercise = (exercise: Exercise) => {
+        console.log("Delete")
     }
 
     return (
@@ -47,10 +53,10 @@ export const ExerciseDropdown = () => {
                                 <h4 className="flex justify-start text-xl w-1/6 leading-tight tracking-tight md:text-2x2 text-white p-2">{item.reps}</h4>
                             </>
                             }
-                            <div className="flex items-center p-1/2" onClick={e => handleEdit(item,index)}>
+                            <div className="flex items-center p-1/2" onClick={e => handleEditExercise(item,index)}>
                                 <FaEdit size={28} color="white"/>
                             </div>
-                            <div className="flex items-center p-1" onClick={e => handleEdit(item,index)}>
+                            <div className="flex items-center p-1" onClick={e => handleDeleteExercise(item)}>
                                 <FaTrash size={28} color="white"/>
                             </div>
                         </div>
